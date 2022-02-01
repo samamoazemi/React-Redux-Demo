@@ -1,4 +1,4 @@
-import { BUY_CAKE } from "./cakeTypes";
+import { BUY_CAKE } from "./caketypes";
 
  const initialState = {
      numOfCakes: 10,
