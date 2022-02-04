@@ -33,11 +33,11 @@ export const fetchUsers = () => {
         axios
           .get("https://jsonplaceholder.typicode.com/users")
           .then((res) => {
-               const userId = res.data.map( u => u.id);
-               dispatch(fetchUsersSuccess(userId));
+               const users = res.data;
+               dispatch(fetchUsersSuccess(users));
           })
           .catch((error) => {
-              dispatch(fetchUsersFailure(error));
+              dispatch(fetchUsersFailure(error.message));
           })
     }
 }
