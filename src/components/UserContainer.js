@@ -12,27 +12,34 @@ const UserContainer = () => {
         dispatch(fetchUsers())
     },[]);
 
-    return (
-      <div>
-        {loading ? (
-          <p> Loading ... </p>
-        ) : error ? ( 
-          <p> {error} </p>
-        ) : (
-          userData &&
-          users &&
-          users.length && (
-              <div>
-                  <h2>user list</h2>
-                  {users.map((user) => (
-                      <p key={user.id}>{user.name}</p>
-                  ))}
-              </div>
-          )
-        )}
-
-      </div>
-    )
+    const renderUsers = () => {
+      if (loading) return <p> loading ... </p>;
+      if (!loading && error) return <p> {error} </p>;
+      if (userData && users.length) 
+        return (
+          <div>
+            <h2>user list</h2>
+            {users.map((user) => (
+              <p key={user.id}>{user.name}</p>
+            ))}
+          </div>
+        )
+    }
+    return <div> {renderUsers()} </div>
 }
- 
+
 export default UserContainer;
+
+// {loading ? (
+//   <p> Loading ... </p>
+// ) : error ? ( 
+//   <p> {error} </p>
+// ) : (
+//   userData &&
+//   users &&
+//   users.length && (
+//     <div>
+//       <h2>user list</h2>
+//       {users.map((user) => (
+//         <p key={user.id}>{user.name}</p>
+//       ))}
